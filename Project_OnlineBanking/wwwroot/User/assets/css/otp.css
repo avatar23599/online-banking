@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    margin: 0;
+    flex-direction: column;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background: url('../images/backgrounds/Background7.jpg') no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.form-box {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-box {
+    position: relative;
+    background: transparent;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    font-size: 1.2em;
+    color: #fff;
+    text-align: center;
+}
+
+.form-value {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .form-value input {
+        width: 40px;
+        font-size: 30px;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        margin: 2px;
+        border: 2px solid #55525c;
+        background: #fff;
+        font-weight: bold;
+        color: black;
+        outline: none;
+        transition: all 0.1s;
+    }
+
+.form-value input:focus {
+    border: 2px solid #a527ff;
+    box-shadow: 0 0 2px 2px #a527ff6a;
+}
+
+.space {
+    margin-right: 1rem !important;
+}
+
+button {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+}

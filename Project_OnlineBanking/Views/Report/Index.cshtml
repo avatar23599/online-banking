@@ -1,0 +1,147 @@
+﻿<script src="https://www.gstatic.com/charts/loader.js"></script>
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<!--Start breadcrumb area-->
+<section class="breadcrumb-area">
+    <div class="breadcrumb-area-bg"
+         style="background-image: url(../User/assets/images/backgrounds/breadcrumb-area-bg-5.jpg);"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="inner-content">
+                    <div class="title" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="500">
+                        <h2>Financial Report</h2>
+                    </div>
+                    <div class="breadcrumb-menu" data-aos="fade-left" data-aos-easing="linear"
+                         data-aos-duration="500">
+                        <ul>
+                            <li><a asp-controller="home" asp-action="index">Home</a></li>
+                            <li class="active">Financial Report</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End breadcrumb area-->
+<!--Start Cards Details Area-->
+<section class="cards-details-area">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xl-4">
+                <div class="sidebar-box-style2">
+                    <!--Start Single Sidebar Box Style1-->
+                    <div class="single-sidebar-box-style1">
+                        <div class="sidebar-title">
+                            <div class="dot-box"></div>
+                            <h3>Financial Report</h3>
+                        </div>
+                        <div class="card-types-box">
+                            <ul>
+                                <li class ="active"><a href="#l">By Month</a></li>
+                                <li><a href="#">By Year</a></li>
+                                @* <li><a href="cards-law-interest.html">Low Interest</a></li>
+                                <li><a href="cards-rewards.html">Rewards</a></li>
+                                <li><a href="cards-secured.html">Secured</a></li>
+                                <li class="active"><a href="cards-travel-hotel.html">Travel & Hotel</a></li> *@
+                            </ul>
+                        </div>
+                    </div>
+                    <!--End Single Sidebar Box Style1-->
+
+                    <div class="border-box-1"></div>
+
+                    <!--Start Sidebar Banner Box-->
+                    <div class="sidebar-banner-box">
+                        <div class="top-box float-bob-y"></div>
+                        <div class="bottom-box float-bob-x"></div>
+                        <div class="logo-box">
+                            <a href="index.html">
+                                <img src="~/User/assets/images/resources/banner-logo-1.png" alt="">
+                            </a>
+                        </div>
+                        <h3>Apply for Credit<br> Card Online</h3>
+                        <ul>
+                            <li><span class="icon-checkbox-mark"></span> The well master-builder</li>
+                            <li><span class="icon-checkbox-mark"></span> On the other hand</li>
+                        </ul>
+                        <div class="btns-box">
+                            <a class="btn-one" asp-controller="contact" asp-action="index">
+                                <span class="txt">Apply Now</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!--End Sidebar Banner Box-->
+
+                </div>
+            </div>
+
+            <div class="col-xl-8">
+                <div class="cards-deails-content-box">
+                    <div class="cards-deails-content-1">
+                        <div class="inner-title">
+                            <h5>Expense Report</h5>
+                            <h2>Report by month</h2>
+                        </div>
+                        <div class="text">
+                            <div id="columnchart_material" style="width: 1000px; height: 500px;"></div>
+                            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                            <script type="text/javascript">
+                                google.charts.load('current', { 'packages': ['bar'] });
+                                google.charts.setOnLoadCallback(drawChart);
+                                function drawChart() {
+                                    var json = $.ajax({
+                                        type: "GET",
+                                        url: "/ajax/chart",
+                                        dataType: "json",
+                                        async: false
+                                    }).responseJSON;
+
+                                    console.log(json);
+
+                                    var dataVis = new google.visualization.DataTable();
+                                    dataVis.addColumn('string', 'Month');
+                                    dataVis.addColumn('number', 'Received');
+                                    dataVis.addColumn('number', 'Spent');
+                                    dataVis.addRows([
+                                        [json[0][0], json[0][1], json[0][2]],
+                                        [json[1][0], json[1][1], json[1][2]],
+                                        [json[2][0], json[2][1], json[2][2]],
+                                        [json[3][0], json[3][1], json[3][2]],
+                                        [json[4][0], json[4][1], json[4][2]],
+                                        [json[5][0], json[5][1], json[5][2]],
+                                        [json[6][0], json[6][1], json[6][2]],
+                                        [json[7][0], json[7][1], json[7][2]],
+                                        [json[8][0], json[8][1], json[8][2]],
+                                        [json[9][0], json[9][1], json[9][2]],
+                                        [json[10][0], json[10][1], json[10][2]],
+                                        [json[11][0], json[11][1], json[11][2]],
+                                    ]);
+
+                                    var options = {
+                                        chart: {
+                                            title: 'Your financial statements for this year',
+                                            subtitle: @ViewBag.year,
+                                        }
+                                    };
+
+                                    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+                                    chart.draw(dataVis, google.charts.Bar.convertOptions(options));
+                                }
+                                
+                            </script>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--End Cards Details Area-->
